@@ -1,21 +1,41 @@
 import { Layout } from '@/components/dom/Layout'
-import '@/global.css'
+import './global.css'
 
+const title = 'Next.js + Three.js'
+const description = 'A minimal starter for Nextjs + React-three-fiber and Threejs.'
+
+/** @type {import('next').Metadata} */
 export const metadata = {
-  title: 'Next.js + Three.js',
-  description: 'A minimal starter for Nextjs + React-three-fiber and Threejs.',
+  title,
+  description,
+  robots: 'noindex, nofollow',
+  openGraph: {
+    title,
+    description,
+    type: 'website',
+    url: 'https://react-three-next-nine.vercel.app/',
+    images: '/icons/share.png',
+    siteName: title,
+  },
+  twitter: {
+    card: 'summary',
+    site: '@pmndrs',
+  },
+  icons: {
+    icon: '/icons/apple-touch-icon.png',
+    apple: [
+      { url: '/icons/apple-touch-icon.png' },
+      { url: '/icons/favicon-16x16.png', sizes: '16x16' },
+      { url: '/icons/favicon-32x32.png', sizes: '32x32' },
+      { url: '/icons/apple-touch-icon.png', sizes: '180x180' },
+    ],
+  },
 }
 
 export default function RootLayout({ children }) {
   return (
     <html lang='en' className='antialiased'>
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
-      <head />
       <body>
-        {/* To avoid FOUT with styled-components wrap Layout with StyledComponentsRegistry https://beta.nextjs.org/docs/styling/css-in-js#styled-components */}
         <Layout>{children}</Layout>
       </body>
     </html>
